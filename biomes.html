@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Biomes Evolution - 5 Minute Challenge</title>
+    <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="evolved-light.ico" type="images/x-icon" media="(prefers-color-scheme:dark)">
+    <link rel="icon" href="evolved.ico" type="images/x-icon" media="(prefers-color-scheme:light)">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
+    <link rel="stylesheet" type="text/css" href="src/session-game.css">
+</head>
+<body>
+    <!-- Session Game Container -->
+    <div id="session-game-container"></div>
+
+    <script type="module">
+        import { initSessionUI } from './src/simple-ui.js';
+        
+        // Initialize session game when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('session-game-container');
+            if (container) {
+                container.style.display = 'block';
+                initSessionUI();
+            }
+        });
+    </script>
+</body>
+</html>
+

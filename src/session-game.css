@@ -1,0 +1,1080 @@
+/* Session Game Styles - Simple and Clean */
+
+#session-game-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #1a1a1a;
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+    overflow-y: auto;
+    z-index: 10000;
+}
+
+/* Start Screen */
+.session-start-screen {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.session-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, #4CAF50 0%, #2196F3 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.session-subtitle {
+    font-size: 1.3rem;
+    color: #aaa;
+    margin-bottom: 0.5rem;
+}
+
+.session-goal {
+    font-size: 1.1rem;
+    color: #888;
+    margin-bottom: 2rem;
+}
+
+.session-name-input {
+    margin: 2rem 0;
+}
+
+.session-name-input input {
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    border: 2px solid #444;
+    background: #2a2a2a;
+    color: #fff;
+    border-radius: 8px;
+    width: 300px;
+    margin-right: 10px;
+    outline: none;
+}
+
+.session-name-input input:focus {
+    border-color: #4CAF50;
+}
+
+.session-btn-primary {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.session-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+}
+
+.session-btn-primary:active {
+    transform: translateY(0);
+}
+
+.session-btn-secondary {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background: #444;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-left: 10px;
+}
+
+.session-btn-secondary:hover {
+    background: #555;
+}
+
+/* Leaderboard Preview */
+.session-leaderboard-preview {
+    margin-top: 3rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.session-leaderboard-preview h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.scores-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.scores-table th {
+    padding: 10px;
+    border-bottom: 2px solid #444;
+    color: #aaa;
+    font-weight: 600;
+}
+
+.scores-table td {
+    padding: 10px;
+    border-bottom: 1px solid #333;
+}
+
+.scores-table tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.no-scores {
+    color: #666;
+    padding: 40px;
+}
+
+/* Evolution Screen */
+.session-evolution-screen {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    position: relative;
+}
+
+/* Evolution Timeline */
+.evolution-timeline {
+    text-align: center;
+    margin: 50px 0;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+}
+
+.evolution-timeline h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #4CAF50;
+    text-shadow: 0 0 20px rgba(76, 175, 80, 0.5);
+}
+
+.evolution-timeline p {
+    font-size: 1.2rem;
+    color: #aaa;
+    margin-bottom: 2rem;
+}
+
+.evolution-progress-container {
+    margin: 2rem 0;
+}
+
+.evolution-progress-bar {
+    height: 30px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 2px solid rgba(76, 175, 80, 0.3);
+    margin-bottom: 10px;
+}
+
+.evolution-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4CAF50 0%, #66BB6A 100%);
+    transition: width 0.3s ease;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+}
+
+.evolution-stage-indicator {
+    font-size: 1.1rem;
+    color: #4CAF50;
+    font-weight: 600;
+}
+
+.evolution-stages-dots {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.stage-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.stage-dot.active {
+    background: #4CAF50;
+    border-color: #4CAF50;
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.8);
+    transform: scale(1.3);
+}
+
+.stage-dot.completed {
+    background: #66BB6A;
+    border-color: #66BB6A;
+}
+
+.sound-toggle-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    z-index: 1000;
+}
+
+.sound-toggle-btn:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.session-timer {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 8px;
+    z-index: 1000;
+}
+
+.session-evolution-screen h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.session-evolution-screen > p {
+    text-align: center;
+    color: #aaa;
+    margin-bottom: 2rem;
+}
+
+.evolution-resources {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.evolution-resource {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    min-width: 250px;
+}
+
+.resource-label {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.resource-value {
+    display: block;
+    font-size: 2rem;
+    color: #4CAF50;
+    margin-bottom: 1rem;
+}
+
+.resource-btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.resource-btn:hover {
+    background: #45a049;
+}
+
+.resource-btn:active {
+    transform: scale(0.98);
+}
+
+/* Biome Selection */
+.biome-selection {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.biome-selection h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.biome-intro {
+    font-size: 1.1rem;
+    color: #aaa;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.biome-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.biome-card {
+    padding: 30px 20px;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.biome-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.biome-card h4 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.biome-tagline {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.select-biome-btn {
+    padding: 10px 25px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.select-biome-btn:hover {
+    background: white;
+}
+
+/* Civilization Game Screen */
+.session-game-screen {
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.biome-indicator {
+    font-size: 1.5rem;
+    font-weight: 600;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+/* Ecosystem Health Bar */
+.ecosystem-health-bar-container {
+    max-width: 800px;
+    margin: 0 auto 30px;
+}
+
+.health-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.health-status {
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.health-bar-bg {
+    height: 40px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.health-bar-fill {
+    height: 100%;
+    transition: width 0.5s ease, background 0.5s ease;
+    border-radius: 18px;
+}
+
+/* Civilization Stats */
+.civilization-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    max-width: 800px;
+    margin: 0 auto 30px;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+.stat-card-score {
+    background: rgba(255, 215, 0, 0.15);
+    border: 2px solid rgba(255, 215, 0, 0.3);
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+}
+
+/* Choice Modal */
+.choice-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.choice-card {
+    background: #2a2a2a;
+    border-radius: 16px;
+    padding: 40px;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.choice-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.choice-card p {
+    font-size: 1.1rem;
+    color: #aaa;
+    margin-bottom: 2rem;
+}
+
+.choice-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.choice-option-btn {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+}
+
+.choice-option-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #4CAF50;
+    transform: translateX(5px);
+}
+
+.option-label {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.option-effect {
+    font-size: 0.95rem;
+    color: #4CAF50;
+}
+
+/* Collapse Warning */
+.collapse-warning {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    font-weight: 900;
+    color: #f44336;
+    text-shadow: 0 0 20px rgba(244, 67, 54, 0.8);
+    animation: pulse 1s infinite;
+    pointer-events: none;
+    z-index: 1500;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 0.5; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+/* End Screen */
+.session-end-screen {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.end-title {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.score-breakdown {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 16px;
+    padding: 40px;
+    max-width: 600px;
+    margin-bottom: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+.final-score-display {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.final-score-label {
+    font-size: 1.2rem;
+    color: #aaa;
+    margin-bottom: 0.5rem;
+}
+
+.final-score-value {
+    font-size: 4rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: scoreReveal 0.5s ease;
+}
+
+@keyframes scoreReveal {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+}
+
+.score-details {
+    margin-bottom: 2rem;
+}
+
+.score-detail {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.detail-label {
+    color: #aaa;
+}
+
+.detail-value {
+    color: #fff;
+    font-weight: 600;
+}
+
+.playstyle-badge {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.badge-label {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 5px;
+}
+
+.badge-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: white;
+}
+
+.end-actions {
+    display: flex;
+    gap: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .session-title {
+        font-size: 2.5rem;
+    }
+    
+    .session-name-input input {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    .session-btn-primary, .session-btn-secondary {
+        width: 100%;
+    }
+    
+    .evolution-resources {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .biome-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .civilization-stats {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .end-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .end-actions button {
+        width: 100%;
+    }
+}
+
+
+/* =================================
+   DRAMATIC GAME MECHANICS STYLES
+   ================================= */
+
+/* Species Tracker Sidebar */
+.species-tracker {
+    position: fixed;
+    right: 20px;
+    top: 100px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 15px;
+    min-width: 200px;
+    max-width: 250px;
+    backdrop-filter: blur(10px);
+    z-index: 100;
+}
+
+.species-tracker h4 {
+    margin: 0 0 10px 0;
+    font-size: 0.9rem;
+    color: #4CAF50;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 8px;
+}
+
+.species-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px;
+    margin: 3px 0;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    transition: all 0.3s;
+}
+
+.species-item.alive {
+    background: rgba(76, 175, 80, 0.2);
+    border-left: 3px solid #4CAF50;
+}
+
+.species-item.extinct {
+    background: rgba(244, 67, 54, 0.2);
+    border-left: 3px solid #f44336;
+    opacity: 0.6;
+    text-decoration: line-through;
+}
+
+.species-icon {
+    font-size: 1.2rem;
+}
+
+.species-name {
+    flex: 1;
+    font-size: 0.8rem;
+}
+
+.species-status {
+    font-size: 0.7rem;
+    font-weight: bold;
+}
+
+.species-item.alive .species-status {
+    color: #4CAF50;
+}
+
+.species-item.extinct .species-status {
+    color: #f44336;
+}
+
+/* Tipping Point Warning */
+.tipping-point-warning {
+    position: fixed;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 152, 0, 0.95);
+    color: #000;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    z-index: 200;
+    animation: pulse-warning 2s infinite;
+    box-shadow: 0 4px 15px rgba(255, 152, 0, 0.5);
+}
+
+@keyframes pulse-warning {
+    0%, 100% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.05); }
+}
+
+/* Death Spiral Warning */
+.death-spiral-warning {
+    position: fixed;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(244, 67, 54, 0.95);
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.3rem;
+    z-index: 201;
+    animation: shake-warning 0.5s infinite;
+    box-shadow: 0 4px 20px rgba(244, 67, 54, 0.7);
+}
+
+@keyframes shake-warning {
+    0%, 100% { transform: translateX(-50%) rotate(0deg); }
+    25% { transform: translateX(-50%) rotate(-2deg); }
+    75% { transform: translateX(-50%) rotate(2deg); }
+}
+
+/* Streak & Momentum Indicator */
+.streak-indicator {
+    position: fixed;
+    top: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #ff9800 0%, #f44336 100%);
+    color: #fff;
+    padding: 10px 25px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 1rem;
+    z-index: 150;
+    animation: glow-streak 1.5s infinite;
+    box-shadow: 0 4px 15px rgba(255, 152, 0, 0.5);
+}
+
+@keyframes glow-streak {
+    0%, 100% { box-shadow: 0 4px 15px rgba(255, 152, 0, 0.5); }
+    50% { box-shadow: 0 4px 25px rgba(255, 152, 0, 0.9); }
+}
+
+/* Notification Popup */
+.notification-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.95);
+    border: 3px solid #4CAF50;
+    border-radius: 15px;
+    padding: 30px;
+    min-width: 300px;
+    max-width: 500px;
+    z-index: 300;
+    animation: popup-enter 0.5s;
+    text-align: center;
+}
+
+@keyframes popup-enter {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* Final Minute Indicator */
+.final-minute-indicator {
+    background: linear-gradient(135deg, #ff9800 0%, #f44336 100%);
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 1rem;
+    animation: flash-final 1s infinite;
+    box-shadow: 0 2px 10px rgba(255, 152, 0, 0.7);
+}
+
+@keyframes flash-final {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+/* Choice Timer */
+.choice-timer-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: #4CAF50;
+    transition: width 0.1s linear, background 0.3s;
+    border-radius: 10px 10px 0 0;
+}
+
+.choice-timer-text {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    z-index: 10;
+}
+
+/* Enhanced Choice Modal for Dramatic Mode */
+.choice-modal {
+    animation: choice-appear 0.3s ease-out;
+}
+
+@keyframes choice-appear {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* End Screen - Species Survival */
+.species-survival-section {
+    margin: 30px 0;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.species-survival-section h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.species-survival-section h3.perfect {
+    color: #4CAF50;
+}
+
+.species-survival-section h3.minor {
+    color: #ff9800;
+}
+
+.species-survival-section h3.major {
+    color: #ff5722;
+}
+
+.species-survival-section h3.catastrophic {
+    color: #f44336;
+}
+
+.narrative-message {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.species-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.species-column {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.species-column h4 {
+    margin: 0 0 10px 0;
+    font-size: 1rem;
+    text-align: center;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Gene Profile Badge */
+.gene-profile-badge {
+    margin: 20px 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 15px;
+    text-align: center;
+}
+
+.gene-profile-badge .badge-label {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 5px;
+}
+
+.gene-profile-badge .badge-value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* Score Details Enhancement */
+.score-details h3,
+.final-stats h3 {
+    margin: 20px 0 10px 0;
+    font-size: 1.2rem;
+    color: #4CAF50;
+    border-bottom: 2px solid #4CAF50;
+    padding-bottom: 8px;
+}
+
+.score-detail.penalty {
+    background: rgba(244, 67, 54, 0.2);
+    border-left: 3px solid #f44336;
+    margin: 5px 0;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.score-detail.penalty .detail-label,
+.score-detail.penalty .detail-value {
+    color: #f44336;
+}
+
+/* Responsive Adjustments for New Elements */
+@media (max-width: 768px) {
+    .species-tracker {
+        right: 10px;
+        top: 80px;
+        min-width: 150px;
+        max-width: 180px;
+        padding: 10px;
+        font-size: 0.8rem;
+    }
+    
+    .species-tracker h4 {
+        font-size: 0.8rem;
+    }
+    
+    .species-item {
+        font-size: 0.75rem;
+    }
+    
+    .species-icon {
+        font-size: 1rem;
+    }
+    
+    .tipping-point-warning,
+    .death-spiral-warning {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+    
+    .streak-indicator {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
+    
+    .species-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,84 @@
+# Backend - keep locally, don't push
+backend/
+node_modules/
+
+# Documentation - keep locally, don't push
+*.md
+!README.md
+*.txt
+
+# Deployment configs - keep locally, don't push
+deploy.sh
+netlify.toml
+package.json
+package-lock.json
+
+# Old game files - not needed
+buildEvolve.js
+buildEvolveDebug.js
+buildWiki.js
+buildWikiDebug.js
+Dockerfile
+save.html
+wiki.html
+wiki/
+evolve/
+strings/
+index.html
+session-game-test.html
+
+# Old Evolve game source files - not needed for Biomes
+src/achieve.js
+src/actions.js
+src/arpa.js
+src/civics.js
+src/debug.js
+src/edenic.js
+src/events.js
+src/evolve.less
+src/functions.js
+src/governor.js
+src/index.js
+src/industry.js
+src/jobs.js
+src/locale.js
+src/main.js
+src/portal.js
+src/prod.js
+src/races.js
+src/resets.js
+src/resources.js
+src/seasons.js
+src/space.js
+src/tech.js
+src/truepath.js
+src/vars.js
+src/wiki/
+
+# Old lib files not needed
+lib/blocking-resource.png
+lib/blocking-stack.png
+lib/buefy.min.0.9.22.css
+lib/cat.png
+lib/copper-miner.png
+lib/cryptojs.min.js
+lib/dog.png
+lib/html5sortable.min.js
+lib/less.3.9.min.js
+lib/lz-string.min.js
+lib/mine.png
+lib/noise.png
+lib/weather-icons-wind.min.css
+lib/weather-icons.min.css
+
+# Fonts not needed
+font/
+
+# Icons - not needed for minimal version
+evolved.ico
+evolved-light.ico
+
+# System files
+.DS_Store
+.netlify/
+.env
