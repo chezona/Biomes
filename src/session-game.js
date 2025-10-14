@@ -9,8 +9,8 @@ export const sessionState = {
     // Session info
     sessionActive: false,
     sessionStartTime: 0,
-    sessionDuration: 300, // 5 minutes in seconds
-    timeRemaining: 300,
+    sessionDuration: 180, // 3 minutes in seconds
+    timeRemaining: 180,
     phase: 'start', // 'start', 'evolution', 'civilization', 'ended'
     
     // Player info
@@ -39,7 +39,7 @@ export const sessionState = {
     // Choices
     choicesPresented: [],
     choiceTimer: 0,
-    nextChoiceTime: 7, // First choice after 7 seconds (rapid-fire!)
+    nextChoiceTime: 5, // First choice after 5 seconds (rapid-fire!)
     currentChoiceStartTime: 0,
     choiceTimeLimit: 10, // 10 seconds to make a choice
     speedBonus: 0, // Bonus points for fast decisions
@@ -645,7 +645,7 @@ export function startSession(playerName) {
     sessionState.ecosystemHealth = 100;
     sessionState.choicesPresented = [];
     sessionState.choiceTimer = 0;
-    sessionState.nextChoiceTime = 7; // Rapid-fire!
+    sessionState.nextChoiceTime = 5; // Faster pace for 3-minute game!
     sessionState.speedBonus = 0;
     sessionState.currentChoiceStartTime = 0;
     
@@ -692,6 +692,10 @@ export function selectBiome(biomeId) {
     sessionState.selectedBiome = biomeId;
     sessionState.phase = 'civilization';
     sessionState.lastUpdateTime = Date.now();
+    
+    // Start the 3-minute countdown AFTER biome selection
+    sessionState.sessionStartTime = Date.now();
+    sessionState.timeRemaining = sessionState.sessionDuration;
     
     const biome = getBiome(biomeId);
     sessionState.growthMultiplier = 1.0;
@@ -848,12 +852,12 @@ export function updateSession(deltaTime) {
         return;
     }
     
-    // Check for final minute
-    if (sessionState.timeRemaining <= 60 && !sessionState.finalMinute) {
+    // Check for final 40 seconds (faster for 3-minute game)
+    if (sessionState.timeRemaining <= 40 && !sessionState.finalMinute) {
         sessionState.finalMinute = true;
         playSound('warning');
-        // Choices come faster in final minute!
-        sessionState.nextChoiceTime = 5;
+        // Choices come even faster in final stretch!
+        sessionState.nextChoiceTime = 4;
     }
     
     // Update evolution phase
@@ -893,13 +897,24 @@ export function updateSession(deltaTime) {
         resGrowth *= penalties.resourceMultiplier; // Extinction penalty
         sessionState.resources += resGrowth;
         
-        // Natural ecosystem degradation from population pressure
+        // Natural decay system (30% per minute = 0.5% per second)
+        const decayRate = 0.30; // 30% per minute
+        const decayPerSecond = decayRate / 60;
+        
+        sessionState.ecosystemHealth -= sessionState.ecosystemHealth * decayPerSecond * dt;
+        sessionState.techLevel -= sessionState.techLevel * decayPerSecond * dt;
+        sessionState.population -= sessionState.population * decayPerSecond * dt;
+        
+        // Additional ecosystem degradation from population pressure
         let degradation = (sessionState.population / 1000) * 0.05 * dt;
         if (sessionState.deathSpiralActive) degradation *= 2; // Death spiral doubles degradation!
         sessionState.ecosystemHealth -= degradation;
         
-        // Clamp ecosystem health
+        // Clamp all stats to prevent negative values
         sessionState.ecosystemHealth = Math.max(0, Math.min(100, sessionState.ecosystemHealth));
+        sessionState.techLevel = Math.max(0, sessionState.techLevel);
+        sessionState.population = Math.max(5, sessionState.population); // Minimum 5 to prevent extinction
+        sessionState.resources = Math.max(0, sessionState.resources);
         
         // Check for ecosystem collapse
         if (sessionState.ecosystemHealth <= 0) {
@@ -918,29 +933,43 @@ export function updateSession(deltaTime) {
     }
 }
 
+// Shuffle array utility
+function shuffleArray(array) {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+}
+
 // Get next choice to present to player
 export function getNextChoice() {
     if (sessionState.choiceTimer < sessionState.nextChoiceTime) {
         return null;
     }
     
-    // Increased limit for rapid-fire (can now see 20-30 choices in a game)
-    if (sessionState.choicesPresented.length >= 30) {
+    // Increased limit for 3-minute game (allow 50 choices)
+    if (sessionState.choicesPresented.length >= 50) {
         return null;
     }
     
     // Check if should trigger a crisis instead
-    const elapsedSinceStart = 300 - sessionState.timeRemaining;
+    const elapsedSinceStart = 180 - sessionState.timeRemaining;
     if (shouldTriggerCrisis(sessionState.timeRemaining, lastCrisisTime, availableCrises)) {
         if (availableCrises.length > 0) {
             const crisis = availableCrises.shift();
             lastCrisisTime = elapsedSinceStart;
-            return crisis; // Return crisis as a choice
+            // Randomize crisis options too
+            if (crisis.options) {
+                crisis.options = shuffleArray(crisis.options);
+            }
+            return crisis;
         }
     }
     
     // Random mutation (2-3 per game)
-    if (mutationsTriggered < 3 && elapsedSinceStart > 60 && Math.random() < 0.02) {
+    if (mutationsTriggered < 3 && elapsedSinceStart > 30 && Math.random() < 0.02) {
         mutationsTriggered++;
         const mutation = triggerMutation(sessionState);
         playSound('evolve');
@@ -948,11 +977,21 @@ export function getNextChoice() {
     }
     
     // Get unused regular choices
-    const unusedChoices = gameChoices.filter(c => !sessionState.choicesPresented.includes(c.id));
-    if (unusedChoices.length === 0) return null;
+    let unusedChoices = gameChoices.filter(c => !sessionState.choicesPresented.includes(c.id));
+    
+    // If no unused choices, recycle them (allows infinite questions)
+    if (unusedChoices.length === 0) {
+        sessionState.choicesPresented = []; // Reset
+        unusedChoices = [...gameChoices];
+    }
     
     // Select random choice
     const choice = unusedChoices[Math.floor(Math.random() * unusedChoices.length)];
+    
+    // Randomize the option order to prevent gaming
+    if (choice && choice.options) {
+        choice.options = shuffleArray(choice.options);
+    }
     
     // Mark when choice starts (for timer)
     sessionState.currentChoiceStartTime = Date.now();
@@ -1044,9 +1083,9 @@ export function makeChoice(choiceId, optionIndex) {
     // Mark choice as presented
     sessionState.choicesPresented.push(choiceId);
     
-    // Reset timer for next choice (rapid-fire: 7-10 seconds, faster in final minute)
+    // Reset timer for next choice (rapid-fire: 5-7 seconds, faster in final stretch)
     sessionState.choiceTimer = 0;
-    sessionState.nextChoiceTime = sessionState.finalMinute ? 5 : (7 + Math.random() * 3);
+    sessionState.nextChoiceTime = sessionState.finalMinute ? 3 : (5 + Math.random() * 2);
     
     // Check for ecosystem collapse
     if (sessionState.ecosystemHealth <= 0) {
