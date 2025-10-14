@@ -40,6 +40,14 @@ Players guide a civilization through critical evolutionary decisions, managing p
 - **Scoring**: Balance multiple metrics for optimal genetic fitness
 - **Time Limit**: 5 minutes to maximize your civilization score
 
+## Mobile Support
+
+Fully optimized for mobile devices with:
+- Responsive touch-friendly interface
+- Landscape and portrait orientation support
+- Optimized layouts for screens as small as 360px
+- Touch feedback and larger tap targets
+
 ## License
 
 MIT License - See LICENSE file for details
