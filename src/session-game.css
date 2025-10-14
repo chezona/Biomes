@@ -1298,24 +1298,50 @@
         line-height: 1.3;
     }
     
-    /* Warnings Mobile */
-    .tipping-point-warning,
-    .death-spiral-warning {
-        position: relative !important;
-        font-size: 0.85rem;
-        padding: 8px 12px;
-        margin: 5px 0;
-        width: 100%;
+    /* Warnings Mobile - Top of screen to avoid overlap with stats */
+    .tipping-point-warning {
+        position: fixed !important;
+        top: 5px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        font-size: 0.75rem;
+        padding: 5px 10px;
+        margin: 0;
+        width: auto;
+        max-width: 95%;
         text-align: center;
+        z-index: 3000;
+        border-radius: 6px;
+    }
+    
+    .death-spiral-warning {
+        position: fixed !important;
+        top: 5px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        font-size: 0.75rem;
+        padding: 5px 10px;
+        margin: 0;
+        width: auto;
+        max-width: 95%;
+        text-align: center;
+        z-index: 3000;
+        border-radius: 6px;
     }
     
     .streak-indicator {
-        position: relative !important;
-        font-size: 0.75rem;
-        padding: 5px 10px;
-        margin: 5px 0;
-        width: 100%;
+        position: fixed !important;
+        top: 35px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        font-size: 0.7rem;
+        padding: 4px 8px;
+        margin: 0;
+        width: auto;
+        max-width: 95%;
         text-align: center;
+        z-index: 3000;
+        border-radius: 12px;
     }
     
     .notification-popup {
