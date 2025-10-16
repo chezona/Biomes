@@ -5,6 +5,7 @@ node_modules/
 # Documentation - keep locally, don't push
 *.md
 !README.md
+!PRESENTATION.md
 *.txt
 
 # Deployment configs - keep locally, don't push
